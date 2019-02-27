@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import moment from 'moment';
 import './index.css';
@@ -66,8 +66,7 @@ const MoreOptionsButton = () => (
   <i className="fa fa-ellipsis-h more-options-button" />
 );
 
-var testTweets = [
-{
+var testTweet ={
   message: "My Holidays",
   gravatar: "xyz",
   author: {
@@ -77,63 +76,29 @@ var testTweets = [
   likes: 21,
   retweets: 12,
   timestamp: "2019-02-25 21:24:37" 
-},
-{
-  message: "My Vacation in Bangladesh",
-  gravatar: "xyz",
-  author: {
-    handle: "njawad",
-    name: "Nijhum"
-  },
-  likes: 2,
-  retweets: 1,
-  timestamp: "2019-02-26 21:24:37" 
-},
-{
-  message: "My Sister's Weading Ceremony",
-  gravatar: "xyz",
-  author: {
-    handle: "zjeme",
-    name: "Zakia"
-  },
-  likes: 25,
-  retweets: 15,
-  timestamp: "2019-02-20 21:24:37" 
-},
-{
-  message: "A great Weekend with Friends",
-  gravatar: "xyz",
-  author: {
-    handle: "rashrafi",
-    name: "Rasif"
-  },
-  likes: 12,
-  retweets: 15,
-  timestamp: "2019-02-24 21:24:37" 
 }
-]
 
-function Tweet() {
-  return (
-    <div className="main">
-      {testTweets.map( tweet => 
-      <div className="tweet">
-        <Avatar hash={tweet.gravatar}/>
-        <div className="content">
-          <NameWithHandle author={tweet.author} />
-          <Time time={tweet.timestamp} />
-          <Message text={tweet.message} />
-          <div className="buttons">
-            <ReplyButton />
-            <RetweetButton count={tweet.retweets} />
-            <LikeButton count={tweet.likes} />
-            <MoreOptionsButton />
+class Tweet extends Component {
+  render(){
+      const {gravatar, author, timestamp, message, retweets, likes} = this.props.tweet;
+      return (
+          <div className="tweet">
+          <Avatar hash={gravatar}/>
+          <div className="content">
+              <NameWithHandle author={author} />
+              <Time time={timestamp} />
+              <Message text={message} />
+              <div className="buttons">
+              <ReplyButton />
+              <RetweetButton count={retweets} />
+              <LikeButton count={likes} />
+              <MoreOptionsButton />
+              </div>
           </div>
-        </div>
-      </div>
-      )}
-    </div>
-  );
+          </div>
+
+      );
+  }
 }
 
-ReactDOM.render(<Tweet tweet={testTweets} />, document.getElementById('root'));
+ReactDOM.render(<Tweet tweet={testTweet} />, document.getElementById('root'));
