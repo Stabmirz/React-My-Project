@@ -87,7 +87,7 @@ var testTweets = [
   },
   likes: 2,
   retweets: 1,
-  timestamp: "2019-01-25 21:24:37" 
+  timestamp: "2019-02-26 21:24:37" 
 },
 {
   message: "My Sister's Weading Ceremony",
@@ -98,13 +98,24 @@ var testTweets = [
   },
   likes: 25,
   retweets: 15,
-  timestamp: "2019-01-25 21:24:37" 
+  timestamp: "2019-02-20 21:24:37" 
+},
+{
+  message: "A great Weekend with Friends",
+  gravatar: "xyz",
+  author: {
+    handle: "rashrafi",
+    name: "Rasif"
+  },
+  likes: 12,
+  retweets: 15,
+  timestamp: "2019-02-24 21:24:37" 
 }
 ]
 
 function Tweet() {
   return (
-    <div>
+    <div className="main">
       {testTweets.map( tweet => 
       <div className="tweet">
         <Avatar hash={tweet.gravatar}/>
