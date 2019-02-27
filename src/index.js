@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import moment from 'moment';
 import './index.css';
@@ -78,24 +78,27 @@ var testTweet = {
   timestamp: "2018-01-25 21:24:37" 
 };
 
-function Tweet({ tweet }) {
-  return (
-    <div className="tweet">
-      <Avatar hash={tweet.gravatar}/>
-      <div className="content">
-        <NameWithHandle author={tweet.author} />
-        <Time time={tweet.timestamp} />
-        <Message text={tweet.message} />
-        <div className="buttons">
-          <ReplyButton />
-          <RetweetButton count={tweet.retweets} />
-          <LikeButton count={tweet.likes} />
-          <MoreOptionsButton />
-        </div>
-      </div>
-    </div>
+class Tweet extends Component {
+    render(){
+        const {gravatar, author, timestamp, message, retweets, likes} = this.props.tweet;
+        return (
+            <div className="tweet">
+            <Avatar hash={gravatar}/>
+            <div className="content">
+                <NameWithHandle author={author} />
+                <Time time={timestamp} />
+                <Message text={message} />
+                <div className="buttons">
+                <ReplyButton />
+                <RetweetButton count={retweets} />
+                <LikeButton count={likes} />
+                <MoreOptionsButton />
+                </div>
+            </div>
+            </div>
 
-  );
+        );
+    }
 }
 
 ReactDOM.render(<Tweet tweet={testTweet} />, document.getElementById('root'));
