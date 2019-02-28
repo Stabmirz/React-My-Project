@@ -116,7 +116,7 @@ var testTweets = [
 function Tweet({tweets}) {
   return (
     <div className="main">
-      {tweets.map( tweet => 
+      {tweets.map(( tweet )=> 
       <div className="tweet">
         <Avatar hash={tweet.gravatar}/>
         <div className="content">
