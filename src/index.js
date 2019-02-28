@@ -113,10 +113,10 @@ var testTweets = [
 }
 ]
 
-function Tweet() {
+function Tweet({tweets}) {
   return (
     <div className="main">
-      {testTweets.map( tweet => 
+      {tweets.map( tweet => 
       <div className="tweet">
         <Avatar hash={tweet.gravatar}/>
         <div className="content">
@@ -136,4 +136,4 @@ function Tweet() {
   );
 }
 
-ReactDOM.render(<Tweet tweet={testTweets} />, document.getElementById('root'));
+ReactDOM.render(<Tweet tweets={testTweets} />, document.getElementById('root'));
